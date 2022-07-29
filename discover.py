@@ -4,8 +4,6 @@
 import streamlit as st #streamlit
 import pandas as pd #pandas
 import numpy as np #numpy
-import seaborn as sns #seaborn
-import matplotlib as plt #matplotlib
 import altair as alt
 
 
