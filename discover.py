@@ -41,7 +41,7 @@ st.write("Se analiza una base con la siguiente cantidad de columnas: ", discover
 
 #Muestro DataFrame 
 
-st.dataframe(discover)
+st.dataframe(discover, 1200, 400)
 
 st.write("### Notas De Discover - Impacto diario")
 
