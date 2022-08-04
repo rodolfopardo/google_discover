@@ -15,8 +15,8 @@ columnas = ["dia", "ligamx", "seleccion"]
 
 discover.columns = columnas
 
-agosto = discover.iloc[94:125]
-julio = discover.iloc[61:93]
+agosto = discover.iloc[92:125]
+julio = discover.iloc[61:91]
 junio = discover.iloc[31:60]
 mayo = discover.iloc[0:30]
 
@@ -45,9 +45,9 @@ st.write("Se analiza una base con la siguiente cantidad de columnas: ", discover
 
 #Muestro DataFrame 
 
-st.dataframe(discover, 1200, 400)
+st.dataframe(discover, width=800, height=400)
 
-st.write("### Notas De Discover - Impacto diario")
+st.write("### Notas De Discover - Impacto diario en LIGA MX")
 
 #chart_data = pd.DataFrame(
      #discover["Notas Liga MX"], discover["Notas Seccion"],
@@ -70,8 +70,27 @@ col4.metric("Notas en Agosto", int(suma_liga_mx_ag))
 chart = alt.Chart(discover).mark_line().encode(
   x=alt.X("dia"),
   y=alt.Y("ligamx"),
-  color = alt.value("green")).properties(title="Notas por día - Liga MX")
-st.altair_chart(chart, use_container_width=True)
+  color = alt.value("green")).properties(title="Notas por día - Liga MX", width=800, height=400)
+st.altair_chart(chart, use_container_width=False)
+
+bars = alt.Chart(discover.iloc[92:125]).mark_bar().encode(
+    x="dia",
+    y="ligamx"
+).properties(title="Notas por dia en Agosto - Liga MX", width=800, height=400)
+
+
+text = bars.mark_text(
+    align='center',
+    #baseline='',
+    #dx=3  # Nudges text to right so it doesn't appear on top of the bar
+).encode(
+    text='ligamx:Q'
+)
+
+chart1 = bars +text
+st.altair_chart(chart1, use_container_width=False)
+
+st.write("### Notas De Discover - Impacto diario en Seleccion")
 
 
 col1, col2, col3, col4 = st.columns(4)
@@ -84,8 +103,25 @@ col4.metric("Notas en Agosto", int(suma_seleccion_ag))
 chart = alt.Chart(discover).mark_line().encode(
   x=alt.X('dia'),
   y=alt.Y('seleccion'),
-  color = alt.value("blue")).properties(title="Notas por día - Selección")
-st.altair_chart(chart, use_container_width=True)
+  color = alt.value("blue")).properties(title="Notas por día - Selección", width=800, height=400)
+st.altair_chart(chart, use_container_width=False)
+
+bars = alt.Chart(discover.iloc[92:125]).mark_bar().encode(
+    x="dia",
+    y="seleccion"
+).properties(title="Notas por dia en Agosto - Seleccion", width=800, height=400)
+
+
+text = bars.mark_text(
+    align='center',
+    #baseline='',
+    #dx=3  # Nudges text to right so it doesn't appear on top of the bar
+).encode(
+    text='seleccion:Q'
+)
+
+chart1 = bars +text
+st.altair_chart(chart1, use_container_width=False)
 
 
 
@@ -118,8 +154,8 @@ chart = alt.Chart(discover).mark_point().encode(
   x=alt.X('ligamx'),
   y=alt.Y('seleccion'),
   opacity=alt.value(0.6),
-  color=alt.value('red')).properties(title="Correlacion de variables")
-st.altair_chart(chart, use_container_width=True)
+  color=alt.value('red')).properties(title="Correlacion de variables", width=800, height=500)
+st.altair_chart(chart, use_container_width=False)
 
 
 
