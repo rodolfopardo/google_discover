@@ -61,11 +61,11 @@ st.write("### Notas De Discover - Impacto diario")
 
 #st.metric(label="Cantidad de notas en Julio", value=int(suma_liga_mx_jl), delta= int(suma_liga_mx_jn))
 
-col1, col2, col3 = st.columns(4)
+col1, col2, col3, col4 = st.columns(4)
 col1.metric("Notas en Mayo", int(suma_liga_mx_my))
 col2.metric("Notas en Junio", int(suma_liga_mx_jn))
 col3.metric("Notas en Julio", int(suma_liga_mx_jl))
-col3.metric("Notas en Agosto", int(suma_liga_mx_ag))
+col4.metric("Notas en Agosto", int(suma_liga_mx_ag))
 
 chart = alt.Chart(discover).mark_line().encode(
   x=alt.X("dia"),
@@ -74,11 +74,11 @@ chart = alt.Chart(discover).mark_line().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
-col1, col2, col3 = st.columns(4)
+col1, col2, col3, col4 = st.columns(4)
 col1.metric("Notas en Mayo", int(suma_seleccion_my))
 col2.metric("Notas en Junio", int(suma_seleccion_jn))
 col3.metric("Notas en Julio", int(suma_seleccion_jl))
-col3.metric("Notas en Agosto", int(suma_seleccion_ag))
+col4.metric("Notas en Agosto", int(suma_seleccion_ag))
 
 
 chart = alt.Chart(discover).mark_line().encode(
