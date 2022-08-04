@@ -20,6 +20,9 @@ julio = discover.iloc[61:93]
 junio = discover.iloc[31:60]
 mayo = discover.iloc[0:30]
 
+suma_liga_mx_ag = agosto["ligamx"].sum()
+suma_seleccion_ag = agosto["seleccion"].sum()
+
 suma_liga_mx_jl = julio["ligamx"].sum()
 suma_seleccion_jl = julio["seleccion"].sum()
 
@@ -62,7 +65,7 @@ col1, col2, col3 = st.columns(3)
 col1.metric("Notas en Mayo", int(suma_liga_mx_my))
 col2.metric("Notas en Junio", int(suma_liga_mx_jn))
 col3.metric("Notas en Julio", int(suma_liga_mx_jl))
-
+col3.metric("Notas en Agosto", int(suma_liga_mx_ag))
 
 chart = alt.Chart(discover).mark_line().encode(
   x=alt.X("dia"),
@@ -72,9 +75,10 @@ st.altair_chart(chart, use_container_width=True)
 
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Notas en Mayo", int(suma_seleccion_jl))
+col1.metric("Notas en Mayo", int(suma_seleccion_my))
 col2.metric("Notas en Junio", int(suma_seleccion_jn))
-col3.metric("Notas en Julio", int(suma_seleccion_my))
+col3.metric("Notas en Julio", int(suma_seleccion_jl))
+col3.metric("Notas en Agosto", int(suma_seleccion_ag))
 
 
 chart = alt.Chart(discover).mark_line().encode(
