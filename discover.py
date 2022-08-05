@@ -73,7 +73,7 @@ chart = alt.Chart(discover).mark_line().encode(
   color = alt.value("green")).properties(title="Notas por día - Liga MX", width=800, height=400)
 st.altair_chart(chart, use_container_width=False)
 
-bars = alt.Chart(discover.iloc[92:125]).mark_bar().encode(
+bars = alt.Chart(discover[92:125]).mark_bar().encode(
     x="dia",
     y="ligamx"
 ).properties(title="Notas por dia en Agosto - Liga MX", width=800, height=400)
@@ -106,7 +106,7 @@ chart = alt.Chart(discover).mark_line().encode(
   color = alt.value("blue")).properties(title="Notas por día - Selección", width=800, height=400)
 st.altair_chart(chart, use_container_width=False)
 
-bars = alt.Chart(discover.iloc[92:125]).mark_bar().encode(
+bars = alt.Chart(discover[92:125]).mark_bar().encode(
     x="dia",
     y="seleccion"
 ).properties(title="Notas por dia en Agosto - Seleccion", width=800, height=400)
@@ -129,9 +129,9 @@ st.altair_chart(chart1, use_container_width=False)
 
 ## Correlación de variables 
 
-st.write("## Investigacion correlación de variables")
+st.write("## Investigacion correlación de variables - Agosto")
 
-corr = discover.corr()
+corr = discover[92:125].corr()
 st.write(corr)
 
 st.write("""
