@@ -15,7 +15,7 @@ columnas = ["dia", "ligamx", "seleccion"]
 
 discover.columns = columnas
 
-agosto = discover.iloc[92:125]
+agosto = discover.iloc[92:200]
 julio = discover.iloc[61:91]
 junio = discover.iloc[31:60]
 mayo = discover.iloc[0:30]
