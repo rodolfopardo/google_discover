@@ -131,7 +131,7 @@ st.altair_chart(chart1, use_container_width=False)
 
 st.write("## Investigacion correlación de variables - Agosto")
 
-corr = discover[92:125].corr()
+corr = discover[92:200].corr()
 st.write(corr)
 
 st.write("""
